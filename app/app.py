@@ -21,7 +21,7 @@ def checkProcess():
 def saveUser():
     data = request.data.decode("utf-8")
     data = json.loads(data)
-    queue.enqueue(addUser,data['user'])
+    queue.enqueue(addUser,data)
     return {
         "code": "success",
         "msg": "task queued"
