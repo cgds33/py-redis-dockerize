@@ -4,7 +4,7 @@
 
 This project is a dockerize example with 4 containers. These are flask, redis, postgres and python worker containers.
 Proje was writed with docker-compose.
-Flask container run on public network on 80 port and communicates on local network with other containers
+Flask container run on public network on port '80' and communicates on local network with other containers
 
 <br>
 
