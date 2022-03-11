@@ -4,7 +4,7 @@ services:
     container_name: flask-server
     build: .
     ports:
-      - 8080:80
+      - 80:80
     environment:
       - DATABASE_URL=postgresql://admin:password@db:5432/example_db
     links:
