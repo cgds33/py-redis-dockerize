@@ -1,0 +1,46 @@
+version: "3.4"
+services:
+  flask-server:
+    container_name: flask-server
+    build: .
+    ports:
+      - 8080:80
+    environment:
+      - DATABASE_URL=postgresql://admin:password@db:5432/example_db
+    links:
+      - redis-service
+      - db-service
+      - worker
+    depends_on:
+      - db-service
+      - redis-service
+      - worker
+  worker:
+    image: python:3.8-slim
+    container_name: py-worker
+    volumes:
+      - /worker
+  redis-service:
+    container_name: redis-service
+    image : redis
+    ports:
+      - 6379:6379
+    command: "redis-server /etc/redis.conf"
+    volumes:
+      - ./app/redis-app/redis.conf:/etc/redis.conf
+  db-service:
+    container_name: db-service
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=example_db
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
+  redis_data:
+  
+
