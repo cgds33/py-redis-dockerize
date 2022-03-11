@@ -7,20 +7,24 @@ def dbCreate():
     # create database when first run
     cur = conn.cursor()
     cur.execute("""CREATE TABLE IF NOT EXISTS Users
-        (userName TEXT NOT NULL, firstName TEXT, lastName TEXT, age INT)""")
+        (id INT NOT NULL, firstName TEXT, lastName TEXT, eMail TEXT, gender TEXT, IP TEXT, userName TEXT, agent TEXT)""")
     conn.commit()
     conn.close()
 
 def addUser(userInfo):
     # dict tags
-    userName = userInfo['userName']
-    firstName = userInfo['firstName']
-    lastName = userInfo['lastName']
-    age = userInfo['age']
+    userId = userInfo['id']
+    firstName = userInfo['first_name']
+    lastName = userInfo['last_name']
+    eMail = userInfo['email']
+    gender = userInfo['gender']
+    ip = userInfo['ip_adress']
+    userName = userInfo['user_name']
+    userAgent = userInfo['agent']
 
     # save db
     cur = conn.cursor()
-    cur.execute("INSERT INTO Users VALUES (?,?,?,?)",(userName,firstName,lastName,age))
+    cur.execute("INSERT INTO Users VALUES (?,?,?,?,?,?,?,?)",(userId,firstName,lastName,eMail,gender,ip,userName,userAgent))
     conn.commit()
     conn.close()
 
