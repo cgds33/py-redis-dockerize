@@ -16,7 +16,23 @@ for up containers with command line:
 
 <br>
 
-### 3. Implement your own project 
+### 3. Usage
+
+Project have two endpoint:
+
+#### a) '/', method=GET
+
+Returns the information that the process is active 
+
+#### b) '/api/user', method=POST
+
+Saves user information to database with json. 
+
+The submitted json takes 9 values and they are "id","first_name","last_name","email","gender","ip_adress","user_name","agent","country".
+
+<br>
+
+### 4. Implement your own project 
 
 If you want to use that codes, you must don't forget change database and redis defauld passwords.
 
