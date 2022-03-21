@@ -1,10 +1,12 @@
 ## py-redis-dockerize
 
-### 1. Info
+### 1. Summary
 
-This project is a dockerize example with 4 containers. These are flask, redis, postgres and python worker containers.
-Proje was writed with docker-compose.
-Flask container run on public network on port '80' and communicates on local network with other containers
+This project is a dockerize example with 4 containers. These are flask, redis, postgres and python worker containers. Proje was writed with docker-compose.
+
+Flask container run on public network on port '80' and communicates on local network with other containers. 
+
+Flask gets user information in json format with post requests. Redis queues incoming requests and send it to workers. User information sent to workers is saved in the database. 
 
 <br>
 
@@ -28,7 +30,7 @@ Returns the information that the process is active
 
 Saves user information to database with json. 
 
-The submitted json takes 9 values and they are "id","first_name","last_name","email","gender","ip_adress","user_name","agent","country".
+The submitted json takes 9 values and they are "id", "first_name", "last_name", "email", "gender", "ip_adress", "user_name", "agent", "country".
 
 <br>
 
